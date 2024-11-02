@@ -50,6 +50,26 @@ export default function Homepage() {
       clearInterval(countEducators);
     };
   }, []);
+  const [showButton, setShowButton] = useState(false);
+
+  // Show button when scrolled 300px down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
 
   return (
     <div className="min-h-screen bg-black text-white pt-[72px]">
@@ -274,6 +294,13 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      <button
+        className={`back-to-top ${showButton ? 'show' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        ↑ Top
+      </button>
 
       {/* Footer */}
       <footer className="bg-gray-800 py-12 px-4">

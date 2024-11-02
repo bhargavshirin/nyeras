@@ -15,3 +15,25 @@
   display: inline-block;
   animation: marquee 15s linear infinite;
 }
+
+/* Back to Top Button Styles */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #ff6700; /* Customize your color */
+  color: white;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
