@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect,useState } from 'react'
-import { Book, GraduationCap, LightbulbIcon, Users, Instagram, Mail, Youtube, Phone, MapPin } from 'lucide-react'
+import { Book, GraduationCap, LightbulbIcon, Users, Instagram, Mail, Youtube, Phone, MapPin, Facebook, Linkedin } from 'lucide-react'
 import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -69,7 +69,25 @@ export default function Homepage() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
+  const FloatingSidebar = () => (
+    <div className="fixed right-0 top-1/3 flex flex-col items-center space-y-4 bg-white p-2 rounded-l-2xl shadow-lg">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <Instagram className="w-6 h-6 text-black hover:text-orange-500" />
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <Facebook className="w-6 h-6 text-black hover:text-orange-500" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+        <Linkedin className="w-6 h-6 text-black hover:text-orange-500" />
+      </a>
+      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+        <Youtube className="w-6 h-6 text-black hover:text-orange-500" />
+      </a>
+      <a href="tel:+1234567890" className="text-black hover:text-orange-500">
+        <Phone className="w-6 h-6" />
+      </a>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-black text-white pt-[72px]">
@@ -294,6 +312,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      <FloatingSidebar />
       <button
         className={`back-to-top ${showButton ? 'show' : ''}`}
         onClick={scrollToTop}
