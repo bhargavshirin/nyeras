@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import { Book, GraduationCap, LightbulbIcon, Users, Instagram, Mail, Youtube, Phone, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import AOS from 'aos'
@@ -13,6 +13,43 @@ export default function Homepage() {
       once: true,
     })
   }, [])
+  const [studentsCount, setStudentsCount] = useState(0);
+  const [educatorsCount, setEducatorsCount] = useState(0);
+
+  useEffect(() => {
+    // Counter function to animate student count
+    const studentsTarget = 1200;
+    const educatorsTarget = 20;
+
+    // Increment rates
+    const studentsIncrement = Math.ceil(studentsTarget / 100); // Adjust speed
+    const educatorsIncrement = Math.ceil(educatorsTarget / 100);
+
+    const countStudents = setInterval(() => {
+      setStudentsCount((prevCount) => {
+        if (prevCount >= studentsTarget) {
+          clearInterval(countStudents);
+          return studentsTarget;
+        }
+        return prevCount + studentsIncrement;
+      });
+    }, 20); // Adjust interval speed for effect
+
+    const countEducators = setInterval(() => {
+      setEducatorsCount((prevCount) => {
+        if (prevCount >= educatorsTarget) {
+          clearInterval(countEducators);
+          return educatorsTarget;
+        }
+        return prevCount + educatorsIncrement;
+      });
+    }, 100); // Adjust interval speed for effect
+
+    return () => {
+      clearInterval(countStudents);
+      clearInterval(countEducators);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white pt-[72px]">
@@ -48,46 +85,72 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-600 to-black text-center py-20 px-4">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">Empower Your Future with Nyeras</h2>
-        <p className="text-xl mb-8" data-aos="fade-up" data-aos-delay="200">Discover a world of knowledge with our cutting-edge online courses</p>
-        <button className="bg-white text-orange-600 font-bold py-2 px-6 rounded-full hover:bg-orange-100 transition duration-300" data-aos="fade-up" data-aos-delay="400">
+        <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-wide" data-aos="fade-up">
+          Empower Your Future with Nyeras
+        </h2>
+        <p className="text-2xl text-gray-200 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          Discover a world of knowledge with our cutting-edge online courses
+        </p>
+        <button className="bg-white text-orange-600 font-semibold py-3 px-8 rounded-full hover:bg-orange-100 transition duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
           Explore Courses
         </button>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 px-4 bg-gray-900">
-  <div className="container mx-auto flex flex-col lg:flex-row items-center">
-    {/* Text Content */}
-    <div className="lg:w-1/2 lg:pr-8 mb-8 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
-      <h3 className="text-3xl font-bold mb-6">About Nyeras</h3>
-      <p className="text-lg mb-6" data-aos="fade-up" data-aos-delay="200">
-        Nyeras is a cutting-edge EdTech platform dedicated to empowering learners worldwide. Our mission is to make high-quality education accessible to everyone, regardless of their background or location.
-      </p>
-      <p className="text-lg mb-6" data-aos="fade-up" data-aos-delay="400">
-        With a team of expert educators and industry professionals, we offer a diverse range of courses designed to equip you with the skills needed in today&apos;s rapidly evolving job market.
-      </p>
-      <button
-        className="bg-orange-600 text-white font-bold py-2 px-6 rounded-full hover:bg-orange-700 transition duration-300"
-        data-aos="fade-up"
-        data-aos-delay="600"
-      >
-        Learn More About Us
-      </button>
-    </div>
+      {/* Impact Section */}
+      <section className="py-16 px-4 bg-gray-900 text-white">
+        <div className="container mx-auto text-center">
+          <h3 className="text-4xl font-bold mb-10" data-aos="fade-up">
+            Our Impact
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Students Counter */}
+            <div className="p-8 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition duration-300" data-aos="fade-right" data-aos-delay="200">
+              <h4 className="text-5xl font-bold text-orange-500 mb-2">{studentsCount}+</h4>
+              <p className="text-lg mt-2">Students</p>
+            </div>
 
-    {/* Image Section */}
-    <div className="lg:w-1/2 flex justify-center lg:justify-end" data-aos="fade-up" data-aos-delay="100">
-      <Image
-        src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" // Replace with your actual image URL
-        alt="About Nyeras"
-        width={300} // Adjust the width based on your layout
-        height={300} // Adjust the height based on your layout
-        className="rounded-lg"
-      />
-    </div>
-  </div>
-</section>
+            {/* Educators Counter */}
+            <div className="p-8 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition duration-300" data-aos="fade-left" data-aos-delay="400">
+              <h4 className="text-5xl font-bold text-orange-500 mb-2">{educatorsCount}+</h4>
+              <p className="text-lg mt-2">Educators</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 px-4 bg-gray-900 text-gray-300">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+          {/* Text Content */}
+          <div className="lg:w-1/2 lg:pr-8 mb-8 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
+            <h3 className="text-4xl font-bold mb-6 text-white">About Nyeras</h3>
+            <p className="text-lg mb-6" data-aos="fade-up" data-aos-delay="200">
+              Nyeras is a cutting-edge EdTech platform dedicated to empowering learners worldwide. Our mission is to make high-quality education accessible to everyone, regardless of their background or location.
+            </p>
+            <p className="text-lg mb-6" data-aos="fade-up" data-aos-delay="400">
+              With a team of expert educators and industry professionals, we offer a diverse range of courses designed to equip you with the skills needed in today&apos;s rapidly evolving job market.
+            </p>
+            <button
+              className="bg-orange-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-orange-700 transition duration-300 transform hover:scale-105"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              Learn More About Us
+            </button>
+          </div>
+
+          {/* Image Section */}
+          <div className="lg:w-1/2 flex justify-center lg:justify-end" data-aos="fade-up" data-aos-delay="100">
+            <Image
+              src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" // Replace with your actual image URL
+              alt="About Nyeras"
+              width={350} // Adjusted width for better visuals
+              height={350} // Adjusted height for better visuals
+              className="rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Featured Courses */}
 
