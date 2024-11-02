@@ -21,7 +21,7 @@ export default function Homepage() {
         <div className="py-1 animate-marquee whitespace-nowrap">
           <span className="text-sm mx-4">🎓 New course alert: Advanced Machine Learning - Enroll now!</span>
           <span className="text-sm mx-4">📚 Summer sale: 30% off on all courses - Limited time offer!</span>
-          <span className="text-sm mx-4">🌟 Join our webinar on "Future of AI in Education" - Register today!</span>
+          <span className="text-sm mx-4">🌟 Join our webinar on &quot;Future of AI in Education&quot; - Register today!</span>
         </div>
       </div>
 
