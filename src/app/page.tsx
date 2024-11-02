@@ -18,7 +18,7 @@ export default function Homepage() {
 
   useEffect(() => {
     // Counter function to animate student count
-    const studentsTarget = 1200;
+    const studentsTarget = 2000;
     const educatorsTarget = 20;
 
     // Increment rates
