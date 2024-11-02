@@ -65,7 +65,7 @@ export default function Homepage() {
         Nyeras is a cutting-edge EdTech platform dedicated to empowering learners worldwide. Our mission is to make high-quality education accessible to everyone, regardless of their background or location.
       </p>
       <p className="text-lg mb-6" data-aos="fade-up" data-aos-delay="400">
-        With a team of expert educators and industry professionals, we offer a diverse range of courses designed to equip you with the skills needed in today's rapidly evolving job market.
+        With a team of expert educators and industry professionals, we offer a diverse range of courses designed to equip you with the skills needed in today&apos;s rapidly evolving job market.
       </p>
       <button
         className="bg-orange-600 text-white font-bold py-2 px-6 rounded-full hover:bg-orange-700 transition duration-300"
