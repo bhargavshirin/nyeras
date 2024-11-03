@@ -5,6 +5,7 @@ import { Book, GraduationCap, LightbulbIcon, Users, Instagram, Mail, Youtube, Ph
 import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import PlayStoreBadge from './assets/gpstore.png'
 
 export default function Homepage() {
   useEffect(() => {
@@ -320,7 +321,19 @@ export default function Homepage() {
       >
         ↑ Top
       </button>
-
+      <section className="py-16 px-4 bg-gradient-to-b from-gray-800 to-black text-center">
+        <h3 className="text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up">
+          Download Our App
+        </h3>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          Get access to our courses and stay connected on the go. Download the Nyeras app on the Google Play Store now!
+        </p>
+        <div data-aos="fade-up" data-aos-delay="400">
+          <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+            <Image src={PlayStoreBadge} alt="Get it on Google Play" width={160} height={60} className="mx-auto" />
+          </a>
+        </div>
+      </section>
       {/* Footer */}
       <footer className="bg-gray-800 py-12 px-4">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
