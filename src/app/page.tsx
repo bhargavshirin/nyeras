@@ -376,7 +376,7 @@ export default function Homepage() {
           Get access to our courses and stay connected on the go. Download the Nyeras app on the Google Play Store now!
         </p>
         <div data-aos="fade-up" data-aos-delay="400">
-          <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+          <a href="https://play.google.com/store/apps/details?id=co.lily.lfjjz&hl=en_IN" target="_blank" rel="noopener noreferrer">
             <Image src={PlayStoreBadge} alt="Get it on Google Play" width={160} height={60} className="mx-auto" />
           </a>
         </div>
