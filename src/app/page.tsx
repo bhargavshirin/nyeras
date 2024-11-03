@@ -6,8 +6,32 @@ import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import PlayStoreBadge from './assets/gpstore.png'
+import { NextSeo } from 'next-seo';
 
 export default function Homepage() {
+  const seoConfig = {
+    title: "Nyeras - Affordable E-learning with Certification & Job Placement",
+    description: "Nyeras is an affordable online learning platform by Nyera Educational Trust, offering specialized training for government and MNC jobs with certification, internship, and industry-ready skills. 100% placement assistance and LinkedIn profile optimization included. Trusted by 2000+ students with high placement success.",
+    openGraph: {
+      url: 'https://www.nyeras.com/',
+      title: 'Nyeras - Affordable E-learning with Certification & Job Placement',
+      description: 'Specialized training for public and private sector jobs with certification, internship, and industry-ready skills.',
+      images: [
+        {
+          url: 'https://nyeras.com/assets/nyera_logo-VjIEE-cq.png',
+          width: 800,
+          height: 600,
+          alt: 'Nyeras Logo',
+        },
+      ],
+      site_name: 'Nyeras',
+    },
+    twitter: {
+      handle: '@nyeras',
+      site: '@nyeras',
+      cardType: 'summary_large_image',
+    },
+  };
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -16,6 +40,7 @@ export default function Homepage() {
   }, [])
   const [studentsCount, setStudentsCount] = useState(0);
   const [educatorsCount, setEducatorsCount] = useState(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Counter function to animate student count
@@ -89,9 +114,13 @@ export default function Homepage() {
       </a>
     </div>
   );
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white pt-[72px]">
+     <NextSeo {...seoConfig} />
       {/* Marquee */}
       <div className="bg-orange-700 overflow-hidden fixed top-0 left-0 right-0 z-50">
         <div className="py-1 animate-marquee whitespace-nowrap">
@@ -114,13 +143,35 @@ export default function Homepage() {
             <a href="#" className="hover:text-orange-200">Team</a>
             <a href="#" className="hover:text-orange-200">Contact</a>
           </nav>
-          <button className="md:hidden">
+          <button onClick={toggleSidebar} className="md:hidden">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </header>
+      <div className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-gray-800 z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300`}>
+        <div className="p-4 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Image src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" alt="Nyeras Logo" width={40} height={40} className="rounded-full" />
+            <h1 className="text-2xl font-bold text-white">Nyeras</h1>
+          </div>
+          <button onClick={toggleSidebar} className="text-white">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav className="mt-4">
+          <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">Courses</a>
+          <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">About</a>
+          <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">Team</a>
+          <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">Contact</a>
+        </nav>
+      </div>
+
+      {/* Overlay for Sidebar */}
+      {isSidebarOpen && <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={toggleSidebar}></div>}
 
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-600 to-black text-center py-20 px-4">
