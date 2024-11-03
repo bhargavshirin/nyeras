@@ -6,32 +6,10 @@ import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import PlayStoreBadge from './assets/gpstore.png'
-import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 export default function Homepage() {
-  const seoConfig = {
-    title: "Nyeras - Affordable E-learning with Certification & Job Placement",
-    description: "Nyeras is an affordable online learning platform by Nyera Educational Trust, offering specialized training for government and MNC jobs with certification, internship, and industry-ready skills. 100% placement assistance and LinkedIn profile optimization included. Trusted by 2000+ students with high placement success.",
-    openGraph: {
-      url: 'https://www.nyeras.com/',
-      title: 'Nyeras - Affordable E-learning with Certification & Job Placement',
-      description: 'Specialized training for public and private sector jobs with certification, internship, and industry-ready skills.',
-      images: [
-        {
-          url: 'https://nyeras.com/assets/nyera_logo-VjIEE-cq.png',
-          width: 800,
-          height: 600,
-          alt: 'Nyeras Logo',
-        },
-      ],
-      site_name: 'Nyeras',
-    },
-    twitter: {
-      handle: '@nyeras',
-      site: '@nyeras',
-      cardType: 'summary_large_image',
-    },
-  };
+  
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -119,8 +97,26 @@ export default function Homepage() {
   };
 
   return (
+    <>
+    <Head>
+    <title>Nyeras - Affordable E-learning with Certification & Job Placement</title>
+    <meta name="description" content="Nyeras is an affordable online learning platform by Nyera Educational Trust, offering specialized training for government and MNC jobs with certification, internship, and industry-ready skills. 100% placement assistance and LinkedIn profile optimization included. Trusted by 2000+ students with high placement success." />
+    <meta property="og:url" content="https://www.nyeras.com/" />
+    <meta property="og:title" content="Nyeras - Affordable E-learning with Certification & Job Placement" />
+    <meta property="og:description" content="Specialized training for public and private sector jobs with certification, internship, and industry-ready skills." />
+    <meta property="og:image" content="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="Nyeras" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nyeras" />
+    <meta name="twitter:creator" content="@nyeras" />
+    <meta name="twitter:title" content="Nyeras - Affordable E-learning with Certification & Job Placement" />
+    <meta name="twitter:description" content="Specialized training for public and private sector jobs with certification, internship, and industry-ready skills." />
+    <meta name="twitter:image" content="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" />
+</Head>
     <div className="min-h-screen bg-black text-white pt-[72px]">
-     <NextSeo {...seoConfig} />
+     
       {/* Marquee */}
       <div className="bg-orange-700 overflow-hidden fixed top-0 left-0 right-0 z-50">
         <div className="py-1 animate-marquee whitespace-nowrap">
@@ -431,5 +427,6 @@ export default function Homepage() {
         </div>
       </footer>
     </div>
+    </>
   )
 }
