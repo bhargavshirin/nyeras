@@ -127,7 +127,7 @@ export default function Homepage() {
       </div>
 
       {/* Header */}
-      <header className="bg-orange-600 p-4 md:p-4 fixed top-8 left-0 right-0 z-40">
+      <header className="bg-orange-600 p-3 md:p-3 fixed top-8 left-0 right-0 z-40">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Image src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" alt="Nyeras Logo" width={40} height={40} className="rounded-full" />
@@ -171,7 +171,7 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-600 to-black text-center py-20 px-4">
-        <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-wide" data-aos="fade-up">
+        <h2 className=" text-5xl md:text-6xl font-bold text-white mb-4 tracking-wide" data-aos="fade-up">
           Empower Your Future with Nyeras
         </h2>
         <p className="text-2xl text-gray-200 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
