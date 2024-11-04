@@ -117,7 +117,7 @@ export default function Homepage() {
 </Head>
     <div className="min-h-screen bg-black text-white pt-[72px]">
      
-      {/* Marquee */}
+
       <div className="bg-orange-700 overflow-hidden fixed top-0 left-0 right-0 z-50">
         <div className="py-1 animate-marquee whitespace-nowrap">
           <span className="text-sm mx-4">🎓 New course alert: Advanced Machine Learning - Enroll now!</span>
@@ -126,26 +126,38 @@ export default function Homepage() {
         </div>
       </div>
 
-      {/* Header */}
+
       <header className="bg-orange-600 p-3 md:p-3 fixed top-8 left-0 right-0 z-40">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Image src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" alt="Nyeras Logo" width={40} height={40} className="rounded-full" />
-            <h1 className="text-2xl md:text-3xl font-bold">Nyeras</h1>
-          </div>
-          <nav className="hidden md:flex space-x-4">
-            <a href="#" className="hover:text-orange-200">Courses</a>
-            <a href="#" className="hover:text-orange-200">About</a>
-            <a href="#" className="hover:text-orange-200">Team</a>
-            <a href="#" className="hover:text-orange-200">Contact</a>
-          </nav>
-          <button onClick={toggleSidebar} className="md:hidden">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </header>
+  <div className="container mx-auto flex justify-between items-center">
+    <div className="flex items-center space-x-2">
+      <Image src="https://nyeras.com/assets/nyera_logo-VjIEE-cq.png" alt="Nyeras Logo" width={40} height={40} className="rounded-full" />
+      <h1 className="text-2xl md:text-3xl font-bold text-white">Nyeras</h1>
+    </div>
+    <nav className="hidden md:flex space-x-4">
+      <a href="#" className="hover:text-orange-200 text-white">Courses</a>
+      <a href="#" className="hover:text-orange-200 text-white">About</a>
+      <a href="#" className="hover:text-orange-200 text-white">Team</a>
+      <a href="#" className="hover:text-orange-200 text-white">Contact</a>
+    
+    </nav>
+    <a href="tel:+1234567890" className="hidden md:flex ml-4 px-3 py-1 bg-white text-orange-600 rounded hover:bg-orange-200 font-medium flex items-center space-x-1">
+        <span>Request a Call</span>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 19L19 5M5 5h14v14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+      </a>
+    <button onClick={toggleSidebar} className="md:hidden">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+      {/* Sidebar */}
+
+
+
+
       <div className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-gray-800 z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300`}>
         <div className="p-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -164,6 +176,15 @@ export default function Homepage() {
           <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">Team</a>
           <a href="#" className="block py-2 px-4 text-white hover:bg-orange-600">Contact</a>
         </nav>
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+  <a href="tel:+1234567890" className="block py-2 px-4 bg-orange-600 text-white font-medium rounded hover:bg-orange-700 flex items-center justify-center space-x-1">
+    <span>Request a Call</span>
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 19L19 5M5 5h14v14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </a>
+</div>
+
       </div>
 
       {/* Overlay for Sidebar */}
