@@ -193,7 +193,7 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-600 to-black text-center py-20 px-4">
-        <h2 className=" text-5xl md:text-6xl font-bold text-white mb-4 tracking-wide" data-aos="fade-up">
+        <h2 className=" tracking-tight text-5xl md:text-6xl font-bold text-white mb-4 tracking-wide" data-aos="fade-up">
           Empower Your Future with Nyeras
         </h2>
         <p className="text-2xl text-gray-200 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
