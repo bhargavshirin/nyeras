@@ -128,7 +128,7 @@ export default function LandingPage() {
         rating: 5
       },
       {
-        quote: "The data analytics course I took, was an excellent investment in my skillset. The curriculum was comprehensive, covering both theoretical concepts and practical applications. The instructors were knowledgeable and supportive, guiding us through complex topics with clarity and patience.",
+        quote: "The data analytics course I took, was an excellent investment in my skillset. The curriculum was comprehensive, covering both theoretical concepts and practical applications. The instructors were knowledgeable and supportive.",
         author: "Samantha Lee",
         role: "Operations Manager, GlobalCorp",
         avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvWnQrIy-gtfL307LBfa8W9HisA2CT-dGxw&s",
