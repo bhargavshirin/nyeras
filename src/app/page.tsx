@@ -8,6 +8,7 @@ import Image from "next/image";
 import Marquee from 'react-fast-marquee';
 import Head from 'next/head'
 import AOS from 'aos';
+
 export default function LandingPage() {
     useEffect(() => {
     AOS.init({
