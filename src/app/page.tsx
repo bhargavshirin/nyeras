@@ -3,7 +3,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Clock, ChevronDown, ChevronUp, ChevronLeftIcon, ChevronRightIcon, GraduationCap, BookOpen, Users, Menu, Download, MapPin, Star, ChevronRight, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Clock, ChevronDown, ChevronUp, ChevronLeftIcon, ChevronRightIcon, BookOpen, Users,  MapPin, Star, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 import Image from "next/image";
 import Marquee from 'react-fast-marquee';
 import Head from 'next/head'
@@ -201,7 +201,7 @@ export default function LandingPage() {
           📚 Summer sale: 30% off on all courses - Limited time offer!
         </span>
         <span className="text-sm mx-4 text-white">
-          🌟 Join our webinar on "Future of AI in Education" - Register today!
+          🌟 Join our webinar on &quot;Future of AI in Education&quot; - Register today!
         </span>
       </div>
     </div>
@@ -327,7 +327,7 @@ export default function LandingPage() {
 </h1>
 
         <p className="mt-3 text-xl sm:text-2xl text-gray-500 sm:mt-5">
-          Empower your learning journey with our cutting-edge online courses. Gain skills, knowledge, and confidence to excel in today's digital world.
+          Empower your learning journey with our cutting-edge online courses. Gain skills, knowledge, and confidence to excel in today&apos;s digital world.
         </p>
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -484,7 +484,7 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <blockquote className="mb-4 text-center text-lg italic text-gray-700">
-                    "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                   </blockquote>
                   <div className="flex items-center justify-center">
                     <img
@@ -749,7 +749,7 @@ export default function LandingPage() {
       <h3 className="text-3xl lg:text-5xl font-semibold text-gray-900 mb-4">Nyeras Institutions</h3>
 
         <p className="text-xl text-gray-600 mb-6">
-          We're located in the heart of the city, easily accessible by public transportation.
+          We&apos;re located in the heart of the city, easily accessible by public transportation.
         </p>
         <div className="flex items-start mb-4">
           <MapPin className="h-6 w-6 text-orange-500 mr-2 mt-1" />
