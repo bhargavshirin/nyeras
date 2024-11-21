@@ -91,7 +91,24 @@ export default function LandingPage() {
       // { name: "FLATIR", logo: "/logos/flatir.png" },
     ];
     const [openIndex, setOpenIndex] = useState<number | null>(null)
-
+    const StarIcon = ({ filled }: { filled: boolean }) => (
+      <svg
+        className={`w-5 h-5 ${filled ? 'text-yellow-400' : 'text-gray-300'}`}
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    )
+    
+    const StarRating = ({ rating }: { rating: number }) => (
+      <div className="flex">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <StarIcon key={star} filled={star <= rating} />
+        ))}
+      </div>
+    )
     const faqs = [
       {
         question: "What is Nyeras?",
@@ -119,31 +136,63 @@ export default function LandingPage() {
       setOpenIndex(openIndex === index ? null : index)
     }
   
+    // const testimonials = [
+    //   {
+    //     quote: "The classes here are exceptionally conducive to learning, with instructors who elucidate complex concepts with remarkable clarity and precision.",
+    //     author: "Alex Johnson",
+    //     role: "CTO, TechInnovate",
+    //     avatar: "data:image/jpeg;base64,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",
+    //     rating: 5
+    //   },
+    //   {
+    //     quote: "The data analytics course I took, was an excellent investment in my skillset. The curriculum was comprehensive, covering both theoretical concepts and practical applications. The instructors were knowledgeable and supportive.",
+    //     author: "Samantha Lee",
+    //     role: "Operations Manager, GlobalCorp",
+    //     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvWnQrIy-gtfL307LBfa8W9HisA2CT-dGxw&s",
+    //     rating: 5
+    //   },
+    //   {
+    //     quote: "We've seen a 40% increase in productivity since implementing this solution. It's been a game-changer for our team.",
+    //     author: "Michael Chen",
+    //     role: "Product Lead, FutureTech",
+    //     avatar: "data:image/jpeg;base64,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",
+    //     rating: 5
+    //   }
+    // ]
     const testimonials = [
       {
-        quote: "The classes here are exceptionally conducive to learning, with instructors who elucidate complex concepts with remarkable clarity and precision.",
-        author: "Alex Johnson",
-        role: "CTO, TechInnovate",
-        avatar: "data:image/jpeg;base64,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",
-        rating: 5
+        name: "Alex Johnson",
+        role: "High School Teacher",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvWnQrIy-gtfL307LBfa8W9HisA2CT-dGxw&s",
+        quote: "This platform has revolutionized my teaching methods. My students are more engaged than ever!",
+        rating: 5,
       },
       {
-        quote: "The data analytics course I took, was an excellent investment in my skillset. The curriculum was comprehensive, covering both theoretical concepts and practical applications. The instructors were knowledgeable and supportive.",
-        author: "Samantha Lee",
-        role: "Operations Manager, GlobalCorp",
-        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvWnQrIy-gtfL307LBfa8W9HisA2CT-dGxw&s",
-        rating: 5
+        name: "Sarah Lee",
+        role: "College Student",
+        image: "data:image/jpeg;base64,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",
+        quote: "I've seen a significant improvement in my grades since I started using this edtech solution.",
+        rating: 5,
       },
       {
-        quote: "We've seen a 40% increase in productivity since implementing this solution. It's been a game-changer for our team.",
-        author: "Michael Chen",
-        role: "Product Lead, FutureTech",
-        avatar: "data:image/jpeg;base64,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",
-        rating: 5
+        name: "Dr. Michael Brown",
+        role: "University Professor",
+        image: "data:image/jpeg;base64,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",
+        quote: "The analytics provided by this platform have helped me tailor my curriculum to better suit my students' needs.",
+        rating: 5,
+      },
+      {
+        name: "Emily Chen",
+        role: "Parent",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvWnQrIy-gtfL307LBfa8W9HisA2CT-dGxw&s",
+   
+        quote: "As a parent, I appreciate how this tool keeps me informed about my child's progress in real-time.",
+        rating: 5,
       }
     ]
   
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   
     const nextTestimonial = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
@@ -457,82 +506,42 @@ export default function LandingPage() {
       `}</style>
     </div>
     
-<section className="w-full bg-gradient-to-b from-orange-100 to-white py-16 md:py-24">
-      <div className="container mx-auto px-4">
-      <div className="flex justify-center items-center mb-6">
-  <div className="inline-flex rounded-full border-2 border-black  px-6 py-2">
-    <span className="text-lg font-semibold text-black">TESTIMONIALS</span>
-  </div>
-</div>
-        <div className="relative mx-auto max-w-4xl">
-          <div className="overflow-hidden rounded-lg bg-white p-8 shadow-lg">
-            <div className="relative h-[300px]">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className={`absolute left-0 top-0 w-full transition-opacity duration-500 ${
-                    index === currentIndex ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <div className="mb-4 flex justify-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-6 w-6 ${
-                          i < testimonial.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <blockquote className="mb-4 text-center text-lg italic text-gray-700">
-                  &quot;{testimonial.quote}&quot;
-                  </blockquote>
-                  <div className="flex items-center justify-center">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.author}
-                      className="mr-4 h-12 w-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-800">{testimonial.author}</p>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <section className="w-full bg-gradient-to-b from-orange-100 to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center mb-16">
+          <div className="inline-flex rounded-full border-2 border-black px-6 py-2 transition-transform hover:scale-105">
+            <span className="text-lg font-semibold text-black">TESTIMONIALS</span>
           </div>
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 transform rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-100"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-100"
-            aria-label="Next testimonial"
-          >
-            <ChevronRightIcon className="h-6 w-6 text-gray-600" />
-          </button>
         </div>
-        <div className="mt-6 flex justify-center space-x-2">
-          {testimonials.map((_, index) => (
-            <button
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          {testimonials.map((testimonial, index) => (
+            <div
               key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                index === currentIndex ? 'bg-orange-500 w-4' : 'bg-gray-300'
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
+              className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center transform transition-all duration-300 ease-in-out hover:shadow-xl"
+              style={{
+                transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
+              }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="relative w-24 h-24 mb-6">
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-full"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{testimonial.name}</h3>
+              <p className="text-sm text-gray-600 mb-3">{testimonial.role}</p>
+              <StarRating rating={testimonial.rating} />
+              <p className="text-gray-700 text-center italic mt-4 leading-relaxed">"{testimonial.quote}"</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
-
-
 
 
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -590,7 +599,7 @@ export default function LandingPage() {
       </div>
     </section>
         {/* Why Choose Us Section */}
-        <section className="py-20">
+        <section className="py-20 bg-gradient-to-b from-orange-100 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-center mb-6">
   <div className="inline-flex rounded-full border-2 border-black  px-6 py-2">
@@ -724,7 +733,7 @@ export default function LandingPage() {
         {/* Download Our App Section */}
 
         {/* Our Location Section */}
-        <section className="py-20">
+        <section className="bg-gradient-to-b from-orange-100 to-white py-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div className="flex justify-center items-center mb-6">
   <div className="inline-flex rounded-full border-2 border-black px-6 py-2">
@@ -774,7 +783,7 @@ export default function LandingPage() {
             <span className="text-lg font-semibold text-black">DOWNLOAD OUR APP</span>
           </div>
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mt-4">
-            Get Our App Now
+            Get Our App Now!
           </h2>
           <p className="mt-4 text-xl text-gray-600">
             Enjoy our services on the go with our mobile app!
