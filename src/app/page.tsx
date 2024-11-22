@@ -3,7 +3,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Clock, ChevronDown, ChevronUp, ChevronLeftIcon, ChevronRightIcon, BookOpen, Users,  MapPin, Star, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Clock, ChevronDown, ChevronUp, BookOpen, Users,  MapPin, Star, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 import Image from "next/image";
 import Marquee from 'react-fast-marquee';
 import Head from 'next/head'
@@ -191,16 +191,9 @@ export default function LandingPage() {
       }
     ]
   
-    const [currentIndex, setCurrentIndex] = useState(0)
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   
-    const nextTestimonial = () => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
-    }
-  
-    const prevTestimonial = () => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
-    }
+    
     // Show button when scrolled 300px down
     useEffect(() => {
       const handleScroll = () => {
@@ -536,7 +529,7 @@ export default function LandingPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-1">{testimonial.name}</h3>
               <p className="text-sm text-gray-600 mb-3">{testimonial.role}</p>
               <StarRating rating={testimonial.rating} />
-              <p className="text-gray-700 text-center italic mt-4 leading-relaxed">"{testimonial.quote}"</p>
+              <p className="text-gray-700 text-center italic mt-4 leading-relaxed">&quot;{testimonial.quote}&quot;</p>
             </div>
           ))}
         </div>
